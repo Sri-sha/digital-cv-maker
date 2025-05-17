@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Builder</title>
+    <style>
+        /* Base Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem;
+            background-color: #2E8B57; /* SeaGreen */
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.2rem;
+        }
+
+        .dropdown {
+            display: flex;
+            background-color: #ffffff;
+            padding: 10px;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown a {
+            font-size: 18px;
+            margin: 0 20px;
+            text-decoration: none;
+            color: #2E8B57;
+            font-weight: bold;
+        }
+
+        .dropdown a:hover {
+            color: white;
+            background-color: #2E8B57;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .hero-section {
+            background: url("bgimg.jpg") no-repeat center center;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .hero-section h3 {
+            padding: 150px 50px;
+            background: rgba(0, 0, 0, 0.6);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .slider-container {
+            width: 60%;
+            height: 400px;
+            margin: 80px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: 1s;
+        }
+
+        .slider-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nav {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .nav button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            background-color: #2E8B57;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .nav button:hover {
+            background-color: #246b45;
+        }
+
+        h1.section-title {
+            font-size: 40px;
+            color: #e63946;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container1, .container2, .container3 {
+            padding: 20px 40px;
+        }
+
+        .container1 p, .container2 p, .container3 p {
+            font-size: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .center-img {
+            display: block;
+            margin: 40px auto;
+            width: 600px;
+            height: 500px;
+            object-fit: contain;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #2E8B57;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .dropdown {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .dropdown a {
+                margin: 10px 0;
+                font-size: 16px;
+            }
+
+            .hero-section h3 {
+                padding: 50px 20px;
+                font-size: 1rem;
+            }
+
+            .slider-container {
+                width: 90%;
+                height: 200px;
+            }
+
+            .slider-container img {
+                height: 200px;
+            }
+
+            .container1 p, .container2 p, .container3 p {
+                font-size: 16px;
+            }
+
+            h1.section-title {
+                font-size: 28px;
+            }
+
+            .center-img {
+                width: 95%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to CV Builder</h1>
+        <p>Create your professional CV in minutes!</p>
+    </header>
+
+    <div class="dropdown">
+        <section><a href="aboutus.html">ABOUT US</a></section>
+        <section><a href="homepage.html">CREATE CV</a></section>
+        <section><a href="contactus.html">CONTACT US</a></section>
+    </div>
+
+    <div class="hero-section">
+        <h3>CV Builder is a user-friendly and efficient online platform designed to help individuals create professional,
+            polished, and customized CVs with ease. Whether you're a student, recent graduate, or a working professional,
+            CV Builder simplifies the process of crafting an impressive curriculum vitae that stands out in today’s
+            competitive job market.
+
+            Our platform offers a range of professionally designed templates, intuitive editing tools, and guided tips
+            to ensure your CV is both visually appealing and content-rich. With step-by-step input sections, users can
+            seamlessly add their education, experience, skills, and achievements—no design skills required.</h3>
+    </div>
+
+    <div class="slider-container">
+        <img src="images (1).jpg" alt="Slide 1" class="slide">
+        <img src="images (1).png" alt="Slide 2" class="slide">
+        <img src="images (2).jpg" alt="Slide 3" class="slide">
+        <img src="images (2).png" alt="Slide 4" class="slide">
+        <img src="images (3).jpg" alt="Slide 5" class="slide">
+    </div>
+
+    <div class="nav">
+        <button type="button" onclick="goPrev()">Prev</button>
+        <button type="button" onclick="goNext()">Next</button>
+    </div>
+
+    <h1 class="section-title">Key Features</h1>
+
+    <div class="container1">
+        <p><b>Intuitive User Interface (UI):</b> The interface should be clean, user-friendly, and guide users through the
+            CV creation process step-by-step. Think about a logical flow for entering information, perhaps using tabs or
+            a clear visual hierarchy. For example, you might have sections for "Personal Details," "Education,"
+            "Experience," "Skills," and "Projects."</p>
+    </div>
+
+    <div class="container2">
+        <p><b>Easy Editing and Formatting:</b> Provide simple tools for editing text, adjusting fonts, colors (within
+            template limitations), and potentially rearranging sections. Consider using a WYSIWYG (What You See Is What
+            You Get) editor for text fields.</p>
+    </div>
+
+    <div class="container3">
+        <p><b>Real-time Preview:</b> As the user enters information, provide a live preview of their CV. This allows them to
+            see how the final document will look and make adjustments on the fly. Consider displaying different templates
+            in the preview area.</p>
+    </div>
+
+    <img class="center-img" src="cvlast.png" alt="CV Preview Example">
+
+    <footer>
+        <p>&copy; 2025 CV Builder. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll(".slide");
+        let counter = 0;
+
+        slides.forEach((slide, index) => {
+            slide.style.left = `${index * 100}%`;
+        });
+
+        const goNext = () => {
+            if (counter < slides.length - 1) {
+                counter++;
+                slideImage();
+            }
+        };
+
+        const goPrev = () => {
+            if (counter !== 0) {
+                counter--;
+                slideImage();
+            }
+        };
+
+        const slideImage = () => {
+            slides.forEach((slide) => {
+                slide.style.transform = `translateX(-${counter * 100}%)`;
+            });
+        };
+    </script>
+</body>
+</html>

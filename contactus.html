@@ -1,0 +1,156 @@
+<style>
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: #2E8B57; /* Teal */
+      color: white;
+    }
+    footer {
+      background-color: #2E8B57;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 40px;
+    }
+     header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .dropdown {
+      display: flex;
+      background-color: #ffffff;
+      justify-content: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 10px 0;
+    }
+ .dropdown a {
+      margin: 0 20px;
+      font-size: 18px;
+      text-decoration: none;
+      color:  #2E8B57;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .dropdown a:hover {
+      background-color:  #2E8B57;
+      color: white;
+    }
+    </style>
+ <header>
+    <h1>Welcome to CV Builder</h1>
+    <p>Create your professional CV in minutes!</p>
+  </header>
+
+  <div class="dropdown">
+    <a href="aboutus.html">ABOUT US</a>
+    <a href="index.html">CREATE CV</a>
+    <a href="contactus.html">CONTACT US</a>
+  </div>
+  <section id="contact" style="padding: 60px 20px; background: #f7f7f7;">
+    <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+      
+      <!-- Left Content -->
+      <div style="flex: 1; min-width: 300px;">
+        <h2 style="font-size: 36px; margin-bottom: 20px;">feedback</h2>
+        <p style="font-size: 18px; color: #666; margin-bottom: 20px;">
+          Have a question, feedback, or just want to say hello? Feel free to reach out to us using the form. 
+          We'll get back to you as soon as possible!
+        </p>
+        <p style="font-size: 18px; color: #666;">
+          Email: <strong>jk4666806@gmail.com</strong><br>
+          Phone: <strong>+91-9835523165</strong>
+        </p>
+      </div>
+  
+      <!-- Contact Form -->
+      <div style="flex: 1; min-width: 300px;">
+        <form id="contactForm" style="display: flex; flex-direction: column; gap: 15px;">
+          
+          <input 
+            type="text" 
+            name="name" 
+            placeholder="Your Name" 
+            required 
+            style="padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px;">
+          
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Your Email" 
+            required 
+            style="padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px;">
+          
+          <input 
+            type="text" 
+            name="question" 
+            placeholder="question" 
+            required 
+            style="padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px;">
+            <div class="form-floating mb-3">
+              <select class="form-select" id="inquiryType" required>
+                <option value="" disabled selected>Select an inquiry type</option>
+                <option value="general">General Inquiry</option>
+                <option value="support">Support Request</option>
+                <option value="feedback">Feedback</option>
+              </select>
+              <label for="inquiryType">Inquiry Type</label>
+         
+            </div>
+  
+          <textarea 
+            name="message" 
+            rows="5" 
+            placeholder="Your Message" 
+            required 
+            style="padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px;"></textarea>
+          
+          <button 
+            type="submit" 
+            style="padding: 14px; font-size: 18px; background-color: #28a745; color: white; border: none; border-radius: 6px; cursor: pointer;">
+            Send Message
+          </button>
+        </form>
+      </div>
+  
+    </div>
+  </section>
+  
+  <!-- Thank You Popup -->
+  <div id="thankYouPopup"
+   style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); align-items:center; justify-content:center; z-index:1000;">
+    <div style="background:#fff; padding:30px; border-radius:8px; text-align:center; max-width:400px;">
+      <h2 style="color: #28a745;">Thank You!</h2>
+      <p style="font-size:18px; color:#555;">Your message has been sent successfully.</p>
+      <button onclick="closePopup()" style="margin-top:20px; padding:10px 20px; background:#28a745; color:white; border:none; border-radius:6px; cursor:pointer;">
+        Close</button>
+    </div>
+  </div>
+   <footer>
+    <p>&copy; 2025 CV Builder. All rights reserved.</p>
+  </footer>
+  <!-- JavaScript for Popup -->
+  <script>
+    const form = document.getElementById('contactForm');
+    const popup = document.getElementById('thankYouPopup');
+  
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // prevent actual form submission
+      popup.style.display = 'flex'; // show popup
+      form.reset(); // reset form fields
+    });
+  
+    function closePopup() {
+      popup.style.display = 'none'; // hide popup
+    }
+  </script>
+  

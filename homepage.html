@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Digital CV Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: #008080; /* Teal */
+      color: white;
+    }
+    footer {
+      background-color:  #2E8B57;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 40px;
+    }
+     header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .dropdown {
+      display: flex;
+      background-color: #ffffff;
+      justify-content: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 10px 0;
+    }
+ .dropdown a {
+      margin: 0 20px;
+      font-size: 18px;
+      text-decoration: none;
+      color:  #2E8B57;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .dropdown a:hover {
+      background-color: #008080;
+      color: white;
+    }
+    
+ 
+    body {
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    h2 {
+      color: #2c3e50;
+    }
+
+    .form-label, h5 {
+      color: #2e7d32;
+    }
+
+    .btn-primary {
+      background-color: #4CAF50;
+      border-color: #4CAF50;
+    }
+
+    .btn-primary:hover {
+      background-color: #45a049;
+    }
+
+    .btn-secondary {
+      background-color: #008CBA;
+      border-color: #008CBA;
+    }
+
+    .btn-secondary:hover {
+      background-color: #007bb5;
+    }
+
+    #cvPreview {
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    table thead {
+      background-color: #e0f2f1;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #cvPreview, #cvPreview * {
+        visibility: visible;
+      }
+      #cvPreview {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+      #cvPreview button {
+    display: none; /* ❌ Hide the "Print CV" button in print */
+  }
+    }
+  </style>
+</head>
+<header>
+    <h1>Welcome to CV Builder</h1>
+    <p>Create your professional CV in minutes!</p>
+  </header>
+
+  <div class="dropdown">
+    <a href="aboutus.html">ABOUT US</a>
+    <a href="index.html">CREATE CV</a>
+    <a href="contactus.html">CONTACT US</a>
+  </div>
+<body>
+  <div class="container py-4">
+    <h2 class="text-center mb-4">🌟 Digital CV Builder</h2>
+    <div class="row">
+      
+      <!-- Form Section -->
+      <div class="col-md-6 mb-4">
+        <form id="resumeForm">
+          <!-- Profile Photo -->
+          <div class="mb-3">
+            <label class="form-label">Profile </label>
+            <input type="file" class="form-control" id="photoInput" accept="image/*">
+          </div>
+
+          <!-- Personal Info -->
+          <input type="text" id="fullName" class="form-control mb-2" placeholder="Full Name" required>
+          <input type="email" id="email" class="form-control mb-2" placeholder="Email" required>
+          <input type="tel" id="phone" class="form-control mb-3" placeholder="Phone" required>
+
+          <!-- Education -->
+          <h5>🎓 Education</h5>
+          <div id="educationInputs">
+            <div class="row g-2 mb-2">
+              <div class="col">
+                <input type="text" class="form-control education-field" placeholder="Qualification & Institution" required>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control percentage-field" placeholder="Percentage/Grade" required>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-sm btn-secondary mb-3" onclick="addEducation()">+ Add More</button>
+
+          <!-- Experience -->
+          <h5>💼 Work Experience</h5>
+          <div id="experienceInputs">
+            <textarea class="form-control experience-field mb-2" placeholder="Your experience..."></textarea>
+          </div>
+          <button type="button" class="btn btn-sm btn-secondary mb-3" onclick="addExperience()">+ Add More</button>
+
+          <!-- Skills -->
+          <h5>🛠️ Skills</h5>
+          <input type="text" id="skills" class="form-control mb-3" placeholder="e.g. HTML, CSS, JavaScript">
+
+          <!-- Projects -->
+          <h5>📁 Projects</h5>
+          <textarea id="projects" class="form-control mb-3" rows="2" placeholder="Mention your projects..."></textarea>
+
+          <!-- Hobbies -->
+          <h5>🎨 Hobbies</h5>
+          <input type="text" id="hobbies" class="form-control mb-3" placeholder="e.g. Reading, Coding, Traveling">
+
+          <!-- Submit -->
+          <button type="submit" class="btn btn-primary">Generate CV</button>
+        </form>
+      </div>
+
+      <!-- CV Preview Section -->
+      <div class="col-md-6">
+        <div id="cvPreview" class="border rounded p-4 d-none">
+          <div class="text-center mb-3">
+            <img id="cvPhoto" src="" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+          </div>
+          <h3 id="cvName"></h3>
+          <p><strong>Email:</strong> <span id="cvEmail"></span></p>
+          <p><strong>Phone:</strong> <span id="cvPhone"></span></p>
+          <hr>
+
+          <h5>🎓 Education</h5>
+          <table class="table table-bordered" id="cvEducationTable">
+            <thead>
+              <tr><th>Qualification</th><th>Percentage</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <h5>💼 Work Experience</h5>
+          <ul id="cvExperienceList"></ul>
+
+          <h5>🛠️ Skills</h5>
+          <ul id="cvSkills"></ul>
+
+          <h5>📁 Projects</h5>
+          <p id="cvProjects"></p>
+
+          <h5>🎨 Hobbies</h5>
+          <p id="cvHobbies"></p>
+
+          <button class="btn btn-success mt-3" onclick="window.print()">Print CV</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<footer>
+    <p>&copy; 2025 CV Builder. All rights reserved.</p>
+  </footer>
+  <!-- Script to handle preview population -->
+  <script>
+    document.getElementById("resumeForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("cvPreview").classList.remove("d-none");
+
+      document.getElementById("cvName").textContent = document.getElementById("fullName").value;
+      document.getElementById("cvEmail").textContent = document.getElementById("email").value;
+      document.getElementById("cvPhone").textContent = document.getElementById("phone").value;
+
+      // Profile Photo
+      const photo = document.getElementById("photoInput").files[0];
+      if (photo) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById("cvPhoto").src = e.target.result;
+        };
+        reader.readAsDataURL(photo);
+      }
+
+      // Education
+      const educationTable = document.getElementById("cvEducationTable").querySelector("tbody");
+      educationTable.innerHTML = "";
+      const educations = document.querySelectorAll(".education-field");
+      const percentages = document.querySelectorAll(".percentage-field");
+      educations.forEach((edu, index) => {
+        const row = `<tr><td>${edu.value}</td><td>${percentages[index].value}</td></tr>`;
+        educationTable.innerHTML += row;
+      });
+
+      // Experience
+      const experiences = document.querySelectorAll(".experience-field");
+      const expList = document.getElementById("cvExperienceList");
+      expList.innerHTML = "";
+      experiences.forEach(exp => {
+        expList.innerHTML += `<li>${exp.value}</li>`;
+      });
+
+      // Skills
+      const skillsArray = document.getElementById("skills").value.split(",");
+      const skillsList = document.getElementById("cvSkills");
+      skillsList.innerHTML = "";
+      skillsArray.forEach(skill => {
+        skillsList.innerHTML += `<li>${skill.trim()}</li>`;
+      });
+
+      // Projects
+      document.getElementById("cvProjects").textContent = document.getElementById("projects").value;
+
+      // Hobbies
+      document.getElementById("cvHobbies").textContent = document.getElementById("hobbies").value;
+    });
+
+    function addEducation() {
+      const container = document.getElementById("educationInputs");
+      const html = `
+        <div class="row g-2 mb-2">
+          <div class="col">
+            <input type="text" class="form-control education-field" placeholder="Qualification & Institution" required>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control percentage-field" placeholder="Percentage/Grade" required>
+          </div>
+        </div>`;
+      container.insertAdjacentHTML('beforeend', html);
+    }
+
+    function addExperience() {
+      const container = document.getElementById("experienceInputs");
+      container.insertAdjacentHTML('beforeend',
+        `<textarea class="form-control experience-field mb-2" placeholder="Your experience..."></textarea>`);
+    }
+  </script>
+</body>
+</html>
